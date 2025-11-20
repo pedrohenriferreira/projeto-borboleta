@@ -1,0 +1,131 @@
+/* --- HERO SECTION --- */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    background-color: #63442f;
+}
+
+.hero-content {
+    padding: 40px;
+}
+
+.hero-content h1 {
+    width: 100%;
+    font-size: 50px;
+}
+
+.hero-content h1 span {
+    color: #f0d589;
+}
+
+.hero-content p {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 350;
+}
+
+.search-bar-main {
+    width: 500px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.search-bar-main input {
+    flex-grow: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+.search-bar-main button {
+    padding: 6px;
+    background-color: #63442f;
+    color: white;
+    display: flex;
+    align-items: center;
+    border: none;
+    gap: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+.search-bar-main button span {
+    font-size: 15px;
+}
+
+.container-buttons {
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.container-buttons a {
+    text-decoration: none;
+}
+
+#explorar,
+#btn-recomendacoes {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    width: 200px;
+    border-radius: 10px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    color: #442f21;
+}
+
+#explorar span,
+#btn-recomendacoes span {
+    font-size: 20px;
+}
+
+#explorar {
+    background-color: #cfddd7;
+}
+
+#explorar:hover {
+    background-color: #a2ada8;
+    transition: background-color 0.2s linear, color 0.2s linear;
+    cursor: pointer;
+}
+
+#btn-recomendacoes {
+    background-color: #f5f1e8;
+}
+
+#btn-recomendacoes:hover {
+    background-color: #cecac1;
+    transition: background-color 0.2s linear, color 0.2s linear;
+    cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.2rem; 
+    }
+
+    .search-bar-main {
+        width: 90%; 
+    }
+
+    .container-buttons {
+        flex-direction: column; 
+    }
+
+    #explorar, 
+    #btn-recomendacoes {
+        width: 250px; 
+    }
+}

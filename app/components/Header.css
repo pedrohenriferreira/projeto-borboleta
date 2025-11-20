@@ -1,0 +1,262 @@
+/* --- HEADER --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f8f4;
+}
+
+.titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #6b4a32;
+}
+
+.titulo h1 {
+    font-weight: 500;
+    font-family: "Epunda Slab", serif;
+}
+
+.titulo span {
+    font-size: 40px;
+}
+
+.link-content {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+}
+
+header a {
+    color: rgba(0, 0, 0, 0.76);
+    text-decoration: none;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+.search-bar {
+    padding: 6px;
+    border: 1px solid #724e34;
+    border-radius: 5px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 230px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.search-bar button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.search-bar button span {
+    font-size: 20px;
+    color: #807f7c;
+    vertical-align: middle;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    text-decoration: none;
+}
+
+.botoes a:hover {
+    text-decoration: none;
+}
+
+#login {
+    border-radius: 5px;
+    padding: 6px;
+    border: 1px solid #724e34;
+    color: #63442f;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: #f9f8f4;
+}
+
+#login span {
+    font-size: 20px;
+    color: #724e34;
+}
+
+#login:hover {
+    background-color: var(--border);
+    transition: background-color 0.2s linear, color 0.2s linear;
+    cursor: pointer;
+}
+
+#add-livro {
+    background-color: #724e34;
+    border-radius: 5px;
+    color: white;
+    padding: 8.5px;
+    border: none;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#add-livro span {
+    font-size: 15px;
+    color: white;
+}
+
+#add-livro:hover {
+    background-color: #553a26;
+    transition: background-color 0.2s linear, color 0.2s linear;
+    cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    header {
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .link-content {
+        order: 3; 
+        width: 100%;
+        justify-content: center;
+    }
+
+    .search {
+        order: 1;
+    }
+
+    .botoes {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    .link-content {
+        flex-direction: column; 
+        align-items: center;
+        gap: 10px;
+        order: 0; 
+    }
+    
+    .search {
+        order: 0;
+    }
+    
+    .botoes {
+        order: 0;
+        flex-direction: column;
+        width: 100%;
+        align-items: stretch;
+    }
+    
+    .botoes a {
+        width: 100%;
+    }
+    
+    .botoes button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* User Avatar */
+.user-avatar-container {
+    position: relative;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, #5d3317 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid #e0d5c7;
+    box-shadow: 0 2px 8px rgba(68, 47, 33, 0.2);
+}
+
+.user-avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(68, 47, 33, 0.3);
+    border-color: var(--primary);
+}
+
+.user-menu {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    background: white;
+    border: 2px solid #e0d5c7;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(68, 47, 33, 0.2);
+    min-width: 200px;
+    z-index: 1000;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-menu-email {
+    padding: 15px;
+    border-bottom: 2px solid #f5f1e8;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+.user-menu-logout {
+    width: 100%;
+    padding: 12px 15px;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #d32f2f;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.user-menu-logout:hover {
+    background: #ffebee;
+}
+
+.user-menu-logout span {
+    font-size: 20px;
+}

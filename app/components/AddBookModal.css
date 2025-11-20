@@ -1,0 +1,236 @@
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(68, 47, 33, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Modal Content */
+.modal-content {
+    background: linear-gradient(135deg, #ffffff 0%, #fefdfb 100%);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 650px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(68, 47, 33, 0.3);
+    border: 1px solid rgba(206, 177, 147, 0.3);
+    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 35px;
+    background: linear-gradient(135deg, var(--primary) 0%, #5d3317 100%);
+    border-radius: 20px 20px 0 0;
+}
+
+.modal-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-size: 26px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.modal-header h2 span {
+    font-size: 30px;
+}
+
+.close-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+    width: 36px;
+    height: 36px;
+}
+
+.close-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.close-button span {
+    font-size: 24px;
+}
+
+/* Form */
+.add-book-form {
+    padding: 35px;
+    background-color: white;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e0d5c7;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    background-color: #fefdfb;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(93, 51, 23, 0.08);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #b0a090;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23442f21' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 2px solid #f5f1e8;
+}
+
+.cancel-button,
+.submit-button {
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cancel-button {
+    background-color: #f5f1e8;
+    color: #63442f;
+    border: 2px solid transparent;
+}
+
+.cancel-button:hover {
+    background-color: #e8dfd2;
+    border-color: #ceb193;
+    transform: translateY(-2px);
+}
+
+.submit-button {
+    background: linear-gradient(135deg, var(--primary) 0%, #5d3317 100%);
+    color: white;
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(93, 51, 23, 0.3);
+}
+
+.submit-button span {
+    font-size: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .modal-content {
+        max-width: 95%;
+        max-height: 95vh;
+    }
+
+    .modal-header,
+    .add-book-form {
+        padding: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .cancel-button,
+    .submit-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
