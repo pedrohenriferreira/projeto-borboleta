@@ -2,9 +2,11 @@
 
 import './Recomendacoes.css'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { getPopularBooks, getHighRatedBooks } from '../services/googleBooksAPI'
 
 export default function Recomendacoes() {
+  const router = useRouter()
   const [popularBooks, setPopularBooks] = useState([])
   const [favoriteBooks, setFavoriteBooks] = useState([])
   const [highRatedBooks, setHighRatedBooks] = useState([])
@@ -37,8 +39,18 @@ export default function Recomendacoes() {
     fetchRecommendations()
   }, [])
 
+  const handleBookClick = (bookId) => {
+    localStorage.setItem('selectedBookId', bookId)
+    router.push('/detalhes')
+  }
+
   const renderRecommendationCard = (book, index) => (
-    <article className="recommendation-card" key={book.id}>
+    <article 
+      className="recommendation-card" 
+      key={book.id}
+      onClick={() => handleBookClick(book.id)}
+      style={{ cursor: 'pointer' }}
+    >
       <section className="recommendation-card-content">
         <header className="recommendation-card-header">
           <p className="rec-card-number">{index + 1}</p>

@@ -2,16 +2,15 @@
 
 import './Catalogo.css'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { useSearch } from '../context/SearchContext'
-import BookDetailsModal from './BookDetailsModal'
 import { searchBooks, getUniqueCategories } from '../services/googleBooksAPI'
 
 export default function Catalogo() {
+  const router = useRouter()
   const { searchTerm, selectedCategory, setSelectedCategory, sortBy, setSortBy } = useSearch()
   const [allBooks, setAllBooks] = useState([])
   const [filteredBooks, setFilteredBooks] = useState([])
-  const [selectedBook, setSelectedBook] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [categories, setCategories] = useState([])
@@ -39,22 +38,9 @@ export default function Catalogo() {
     fetchBooks()
   }, [])
 
-  const openBookDetails = (book) => {
-    setSelectedBook({
-      titulo: book.title,
-      autor: book.author,
-      categoria: book.category,
-      ano: book.year,
-      isbn: book.isbn,
-      rating: book.rating,
-      disponivel: book.status === 'available',
-      descricao: book.description,
-      thumbnail: book.thumbnail,
-      paginas: book.pageCount,
-      editora: book.publisher,
-      ratingsCount: book.ratingsCount
-    })
-    setIsModalOpen(true)
+  const openBookDetails = (bookId) => {
+    localStorage.setItem('selectedBookId', bookId)
+    router.push('/detalhes')
   }
 
   // Filtrar e ordenar livros
@@ -206,7 +192,7 @@ export default function Catalogo() {
             <article 
               className="book-card" 
               key={book.id}
-              onClick={() => openBookDetails(book)}
+              onClick={() => openBookDetails(book.id)}
               style={{ cursor: 'pointer' }}
             >
               <header className="book-card-top">
@@ -274,12 +260,6 @@ export default function Catalogo() {
           </div>
         </div>
       )}
-
-      <BookDetailsModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        book={selectedBook}
-      />
     </section>
   )
 }
